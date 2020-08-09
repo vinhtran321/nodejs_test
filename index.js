@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
     else
     {
 
-        console.log('Unhandled request');
+        console.log('Unhandled request: Command not implemented');
     }
 });
 
