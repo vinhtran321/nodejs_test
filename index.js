@@ -1,8 +1,24 @@
 const http = require('http');
 
-const server = http.createServer((request, response) => {
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
+const fs = require('fs');
+
+const server = http.createServer((req, res) => {
+   console.log('\nRequest Received');
+   if (req.url === '/')
+   {
+    console.log('Request main html');
+
+        fs.readFile('html//demo.html', (err, data) =>  {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            res.end();
+        });
+    }
+    else
+    {
+
+        console.log('Unhandled request');
+    }
 });
 
 const port = process.env.PORT || 1337;
